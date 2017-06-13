@@ -8,12 +8,29 @@
     <link rel="stylesheet" type="text/css" href="static/iconFont/iconfont.css"/>
   </head>
   <script type="text/javascript">
-  	;(function(){
-			document.documentElement.style.fontSize = innerWidth/3.2 +"px";
-		    window.addEventListener("resize",function(){
-		        document.documentElement.style.fontSize = innerWidth/3.2  + "px";
-		    },false);
-		})()
+  	(function (doc, win) {
+       var docEl = doc.documentElement,
+           resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+           //orientationchange 事件是在用户水平或者垂直翻转设备（即方向发生变化）时触发的事件。
+           //resize事件是屏幕缩放时候触发的事件
+           recalc = function () {
+               var clientWidth = docEl.clientWidth;
+               console.log(clientWidth)
+               if (!clientWidth) return;
+               console.log(clientWidth)
+               if(clientWidth>=640){
+                   docEl.style.fontSize = '100px';
+               }else{
+                   docEl.style.fontSize = 100* (clientWidth / 320) + 'px';
+                   
+                   //你的设计稿是750的,如果高度是100px,你就写1rem;
+                   //1rem=100px
+               }
+           };
+       if (!doc.addEventListener) return;
+       win.addEventListener(resizeEvt, recalc, false);
+       doc.addEventListener('DOMContentLoaded', recalc, false);
+   })(document, window);
   </script>
   <body>
     <div id="app"></div>
