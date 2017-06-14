@@ -5,6 +5,8 @@ import App from './App'
 import VueRouter from 'vue-router'
 import routes from './routerConfig.js'
 import axios from 'axios'
+
+import store from './store/'
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);
@@ -44,7 +46,9 @@ const router=new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
+	store,
   template: '<App/>',
-  components: { App },
-	router
+  components: { App }
+	
 })

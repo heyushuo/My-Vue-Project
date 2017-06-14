@@ -15,16 +15,11 @@
            //resize事件是屏幕缩放时候触发的事件
            recalc = function () {
                var clientWidth = docEl.clientWidth;
-               console.log(clientWidth)
                if (!clientWidth) return;
-               console.log(clientWidth)
                if(clientWidth>=640){
                    docEl.style.fontSize = '100px';
                }else{
                    docEl.style.fontSize = 100* (clientWidth / 320) + 'px';
-                   
-                   //你的设计稿是750的,如果高度是100px,你就写1rem;
-                   //1rem=100px
                }
            };
        if (!doc.addEventListener) return;

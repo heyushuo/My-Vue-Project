@@ -35,34 +35,6 @@
 		</div>
 	</div>
 	</div>
-	<div class="footer">
-		<ul class="clearfix">
-			<li>
-				<a href="javascript:;" style="color:#4169E1;">
-					<div class="iconfont icon-shouyeshouye1"></div>
-					<p>首页</p>
-				</a>
-			</li>
-			<li><a href="javascript:;" id="faqixiezuo">
-				<div class="iconfont icon-renren"></div>
-				<p>发起协作</p>
-			</a></li>
-			<li class="qianshouxiezuo" ><a href="javascript:;">
-				<div class="iconfont icon-pinggu"></div>
-				<p>待签收</p>
-				<span id="toBeSigned" style="display: none;" class="warn"></span>
-			</a></li>
-			<li>
-				<router-link :to="{path:'/my'}" id="my">
-					<div class="iconfont icon-iconfontwohover"></div>
-					<p>我的</p>
-				</router-link>
-				<!--<a href="javascript:;" >
-					
-				</a>-->
-			</li>
-		</ul>
-	</div>
 </div>
 </template>
 
