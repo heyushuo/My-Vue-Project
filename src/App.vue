@@ -8,19 +8,20 @@
 <script>
 	import HomeView from './components/Home'
 	import FooterView from './components/Footer'
-	
 	import {mapGetters,mapActions,mapMutations} from 'vuex'
-//	console.log(mapActions)
-	console.log(mapGetters)
 export default {
   name: 'app',
   mounted(){
   	console.log(this.footerShow)
   },
+  data(){
+  	return {
+  	}
+  },
   computed:{
 		...mapGetters([
 			'footerShow'
-		])
+		]),
   },
   components:{
   	HomeView,
@@ -28,19 +29,18 @@ export default {
   },
   watch:{
   	$route(to,from){
-  		console.log(to.path)
 			if(to.path=="/my"){
-				this.showFooter();
+//				this.showFooter();
 //				alert(this.showFooter())
-					this.$store.commit('showFooter');
-					console.log(this.footerShow)
+//					this.$store.commit('showFooter');
+//					console.log(this.footerShow)
 			}
   	}
   },
   methods:{
   	...mapActions([
       'showFooter' // 映射 this.increment() 为 this.$store.dispatch('increment')
-    ])
+    ]),
   }
 }
 //console.log(showFooter)

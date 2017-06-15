@@ -17,8 +17,6 @@
 				<li><a href="javascript:;">简报</a></li>
 				<li><a href="javascript:;">专栏</a></li>
 				<li><a href="javascript:;">案例</a></li>
-				<select id="sheng" style="border: none;outline: none;float: left;width: 20%;margin-top: 0.03rem;">
-				</select>
 			</ul>
 		</div>
 		<mt-swipe :auto="4000" style="height:1.5rem;" class="swiper">
@@ -26,14 +24,6 @@
 		  <mt-swipe-item><img src="../../static/img/lunbo.jpg"/></mt-swipe-item>
 		  <mt-swipe-item><img src="../../static/img/lunbo.jpg"/></mt-swipe-item>
 		</mt-swipe>
-		<div class="index-content">
-		<div class="yaowen active common">
-			<div id="importNews" style="background: #FFFFFF;">
-				
-			</div>
-			<div class="loadMore" id="loadMore" style="padding: 0.1rem 0;text-align: center;display:none;">点击加载更多>></div>
-		</div>
-	</div>
 	</div>
 </div>
 </template>
@@ -41,27 +31,27 @@
 <script>
 	export default{
 		mounted(){
-			
+			this.fetchData();
 		},
 		data(){
 			return{
-				
+				arrData:[]
 			}
 		},
 		methods:{
-			getData(){
-				this.$http.get("",{
-					params:{
-						messageType:1
-					}
-				})
-				.then(function (res) {
-				    console.log(res);
-				})
-				.catch(function (er) {
-				   	alert(er)
-				});
-			}
+			 fetchData: async function(){	
+			    	let params = {
+			    		"pageNo":1,
+			    		"pagaSize":10,
+			    		"messType":1,
+			    		"province":1
+			      }
+			      const res = await this.api.get('/api/gongan/app/contentpublish/ajaxPageList.do', params)
+			      	if(res.list.length>0){
+			      		this.arrData=res.list;
+			      		console.log(this.arrData)
+			      	}
+		    }
 		}
 	}
 </script>
