@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	import HomeView from './components/Home'
+	import HomeView from './components/home/Home.vue'
 	import FooterView from './components/Footer'
 	import {mapGetters,mapActions,mapMutations} from 'vuex'
 export default {

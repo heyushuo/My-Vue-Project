@@ -3,7 +3,7 @@
 	<div class="box">
 		<div class="home-head clearfix">
 			<div class="logo pull-left">
-				<img src="../../static/img/logo.png"/>
+				<img src="../../../static/img/logo.png"/>
 			</div>
 			<div class="search pull-left">
 				<a href="javascript:;" class="iconfont icon-11"></a>
@@ -20,15 +20,18 @@
 			</ul>
 		</div>
 		<mt-swipe :auto="4000" style="height:1.5rem;" class="swiper">
-		  <mt-swipe-item><img src="../../static/img/lunbo.jpg"/></mt-swipe-item>
-		  <mt-swipe-item><img src="../../static/img/lunbo.jpg"/></mt-swipe-item>
-		  <mt-swipe-item><img src="../../static/img/lunbo.jpg"/></mt-swipe-item>
+		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
+		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
+		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
 		</mt-swipe>
+		<contentView :arrData='arrData'></contentView>
 	</div>
+	
 </div>
 </template>
 
 <script>
+	import contentView from './content.vue'
 	export default{
 		mounted(){
 			this.fetchData();
@@ -38,26 +41,31 @@
 				arrData:[]
 			}
 		},
+		components:{
+			contentView
+		},
 		methods:{
 			 fetchData: async function(){	
 			    	let params = {
 			    		"pageNo":1,
-			    		"pagaSize":10,
-			    		"messType":1,
+			    		"messType":2,
 			    		"province":1
 			      }
 			      const res = await this.api.get('/api/gongan/app/contentpublish/ajaxPageList.do', params)
-			      	if(res.list.length>0){
-			      		this.arrData=res.list;
-			      		console.log(this.arrData)
-			      	}
+			      console.log(res)
+			      if (res.status== 200) {
+			      		if(res.data.list.length>0){
+				      		this.arrData=res.data.list;
+				      	}
+    				}
+			      	
 		    }
 		}
 	}
 </script>
 
 <style scoped="scoped">
-	@import url("../../static/css/theme.css");
+	@import url("../../../static/css/theme.css");
 	.swiper img{
 		width: 100%;
 		height: 100%;
