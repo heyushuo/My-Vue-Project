@@ -12,7 +12,6 @@
 export default {
   name: 'app',
   mounted(){
-  	console.log(this.footerShow)
   },
   data(){
   	return {

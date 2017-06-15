@@ -13,10 +13,7 @@
 		</div>
 		<div class="nav">
 			<ul class="clearfix">
-				<li class="tabActive"><a href="javascript:;">要闻</a></li>
-				<li><a href="javascript:;">简报</a></li>
-				<li><a href="javascript:;">专栏</a></li>
-				<li><a href="javascript:;">案例</a></li>
+				<li v-for='(item,index) in tabData' @click="tabswitch(index+1)" :class="{tabActive:(index+1)==nowIndex}"><a href="javascript:;" >{{item}}</a></li>
 			</ul>
 		</div>
 		<mt-swipe :auto="4000" style="height:1.5rem;" class="swiper">
@@ -38,7 +35,10 @@
 		},
 		data(){
 			return{
-				arrData:[]
+				arrData:[],
+				messType:1,
+				tabData:['要闻','简报','专栏','案例'],
+				nowIndex:1
 			}
 		},
 		components:{
@@ -48,18 +48,22 @@
 			 fetchData: async function(){	
 			    	let params = {
 			    		"pageNo":1,
-			    		"messType":2,
+			    		"messType":this.messType,
 			    		"province":1
 			      }
-			      const res = await this.api.get('/api/gongan/app/contentpublish/ajaxPageList.do', params)
-			      console.log(res)
+			      const res = await this.api.get('/api/contentpublish/ajaxPageList.do', params)
 			      if (res.status== 200) {
-			      		if(res.data.list.length>0){
+			      		if(res.data.list.length>=0){
 				      		this.arrData=res.data.list;
 				      	}
     				}
 			      	
-		    }
+		   },
+		   tabswitch(num){
+		   	    this.nowIndex=num;
+		   		this.messType=num;
+		   		this.fetchData();
+		   }
 		}
 	}
 </script>

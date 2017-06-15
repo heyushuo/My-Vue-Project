@@ -49,6 +49,16 @@ const router=new VueRouter({
 	 routes//如果只写一个单词相当于routes:routes
 })
 
+
+
+
+//全局引入
+//require("../static/")
+
+
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
