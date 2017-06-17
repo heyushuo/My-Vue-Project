@@ -17,14 +17,10 @@ Vue.use(VueRouter);
 //循环遍历所有的过滤器
 Object.keys(filters).forEach((key)=>Vue.filter(key,filters[key]));
 
-
 //使用mintUI插件
-import {Toast,Swipe,SwipeItem} from 'mint-ui'
+import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
-Vue.use(Toast)
-Vue.use(Swipe)
-Vue.use(SwipeItem)
-
+Vue.use(MintUI)
 ////关于axios的一些配置
 ////axios的一些配置，比如发送请求显示loading，请求回来loading消失之类的
 //axios.interceptors.request.use(function (config) {  //配置发送请求信息时
@@ -66,6 +62,6 @@ new Vue({
   router,
 	store,
   template: '<App/>',
-  components: { App }
+  components: { App}
 	
 })

@@ -20,7 +20,7 @@
 				</a>
 			</li>
 			<li class="my">
-				<router-link :to="{path:'/detail'}">
+				<router-link :to="{path:'/my'}">
 					<div :class="[a4 ? 'icon-my':'icon-iconfontwohover','iconfont']"></div>
 					<p>我的</p>
 					<span></span>

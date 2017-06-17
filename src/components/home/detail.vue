@@ -1,7 +1,25 @@
 <template>
 	<div>
-		<div class="detail">
-			1111
+		<div class="head"><a id="head" href="javascript:history.back(-1)" class="back pull-left iconfont icon-zuojiantou"></a><span class="pull-left"></span></div>
+		<div class="box1">
+    		<div class="content">
+				<h1 class="header" id="header">{{detailData.messHeader}}</h1>
+				<div class="small-title clearfix">
+						<div class="pull-left left">
+							<span>来源于:</span><span class="a1">{{detailData.readNum}}</span>
+						</div>
+						<div class="main">
+							<span>发表于:</span><span class="a2">{{detailData.releaseDate|normalData}}</span>
+						</div>
+						<div class="pull-left right">
+							<span>浏览量:</span><span class="a3">{{detailData.readNum}}</span>
+						</div>
+					<!--<span class="resourse">来源:<span id="resourse"></span></span>  <span class="publish"><span>发表于:</span><span id="time">2017-1-6</span></span> <span class="view">浏览量:<span></span></span>-->
+				</div>
+				<div class="contentM" id="contentM">
+					<p>{{detailData.content}}</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -10,8 +28,6 @@
 	export default{
 		mounted(){
 			this.fetchData();
-			const id=$route.params.id;
-					alert(id)
 		},
 		data(){
 			return {
@@ -20,15 +36,14 @@
 		},
 		methods:{
 			fetchData: async function(){
+					const id=this.$route.params.id;
 			    	let params = {
 			    		"id":id,
 			      	}
 			      const res = await this.api.get('/api/contentpublish/toView.do', params)
 			      console.log(res)
 			      if (res.status== 200) {
-			      		if(res.data.list.length>=0){
-				      		this.detailData=res.data;
-				      	}
+			      		this.detailData=res.data.contentPublish;
     				}
 			      	
 		   }
@@ -65,7 +80,6 @@
 	.small-title .main{
 		float: left;
 		width: 37%;
-		/*margin-left: 0.1rem;*/
 	}
 	.contentM p{
 		text-indent: 2em;

@@ -60,7 +60,7 @@
 			      	
 		   },
 		   tabswitch(num){
-		   		Toast({
+		   	this.$toast({
 				  message: '提示',
 				  duration: 1000
 				});

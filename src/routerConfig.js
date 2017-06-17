@@ -17,7 +17,7 @@ export default[
 		component:HomeView
 	},
 	{
-		path:"/detail:id",
+		path:"/detail/:id",
 		component:DetailView
 	}
 ]
