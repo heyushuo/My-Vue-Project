@@ -60,6 +60,10 @@
 			      	
 		   },
 		   tabswitch(num){
+		   		Toast({
+				  message: '提示',
+				  duration: 1000
+				});
 		   	    this.nowIndex=num;
 		   		this.messType=num;
 		   		this.fetchData();
