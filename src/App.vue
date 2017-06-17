@@ -1,13 +1,15 @@
 <template>
   <div id="app">
+  		<LoadingView v-if='footerShow'></LoadingView>
   		<router-view></router-view>
-  		<FooterView v-if='footerShow'></FooterView>
+  		<FooterView></FooterView>
   </div>
 </template>
 
 <script>
 	import HomeView from './components/home/Home.vue'
 	import FooterView from './components/Footer'
+	import LoadingView from './components/loading/Loading'
 	import {mapGetters,mapActions,mapMutations} from 'vuex'
 export default {
   name: 'app',
@@ -24,7 +26,8 @@ export default {
   },
   components:{
   	HomeView,
-  	FooterView
+  	FooterView,
+  	LoadingView
   },
   watch:{
   	$route(to,from){

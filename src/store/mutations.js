@@ -1,11 +1,14 @@
 import getters from './getters'
 
 const state={
-	footer:true
+	footer:false
 }
 
 const mutations={
 	showFooter(state){
+		state.footer=true;
+	},
+	hideFooter(state){
 		state.footer=false;
 	}
 }

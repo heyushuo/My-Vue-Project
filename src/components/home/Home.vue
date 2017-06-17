@@ -1,5 +1,6 @@
 <template>
 <div id="home">
+	
 	<div class="box">
 		<div class="home-head clearfix">
 			<div class="logo pull-left">
@@ -21,7 +22,7 @@
 		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
 		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
 		</mt-swipe>
-		<contentView :arrData='arrData'></contentView>
+		<contentView :arrData='arrData' @getMore="fetchData"></contentView>
 	</div>
 	
 </div>
@@ -37,17 +38,20 @@
 			return{
 				arrData:[],
 				messType:1,
+				pageNo:1,
 				tabData:['要闻','简报','专栏','案例'],
-				nowIndex:1
+				nowIndex:1,
 			}
 		},
 		components:{
 			contentView
 		},
 		methods:{
-			 fetchData: async function(){	
+			 fetchData: async function(data){
+			 		this.pageNo=data;
+			 		console.log(this.pageNo)
 			    	let params = {
-			    		"pageNo":1,
+			    		"pageNo":this.pageNo,
 			    		"messType":this.messType,
 			    		"province":1
 			      }
@@ -60,10 +64,10 @@
 			      	
 		   },
 		   tabswitch(num){
-		   	this.$toast({
-				  message: '提示',
-				  duration: 1000
-				});
+//		   	this.$toast({
+//				  message: '提示',
+//				  duration: 1000
+//				});
 		   	    this.nowIndex=num;
 		   		this.messType=num;
 		   		this.fetchData();

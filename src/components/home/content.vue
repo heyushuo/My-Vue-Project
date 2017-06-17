@@ -11,7 +11,8 @@
 						</router-link>
 					</div>
 				</div>
-				<div class="loadMore" v-show="arrData.length==0" id="loadMore" style="padding: 0.1rem 0;text-align: center;">暂无数据...</div>
+				<div class="loadMore" v-show="arrData.length==0" style="padding: 0.1rem 0;text-align: center;">暂无数据...</div>
+				<div class="loadMore" v-show="arrData.length=10" @click="loadMore()"  style="padding: 0.1rem 0;text-align: center;">点击加载更多>></div>
 			</div>
 		</div>
 	</div>
@@ -19,10 +20,25 @@
 
 <script>
 	export default{
+		mounted(){
+			console.log(this.arrData.length)
+		},
 		props:{
 			arrData:{
 				type:Array,
 				default:[]
+			}
+		},
+		data(){
+			return {
+				nowIndex:2
+			}
+		},
+		methods:{
+			loadMore(){
+				console.log(this.nowIndex)
+				this.$emit('getMore',this.nowIndex);
+				this.nowIndex++;
 			}
 		}
 		
