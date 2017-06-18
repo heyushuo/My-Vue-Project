@@ -1,7 +1,9 @@
 <template>
   <div id="app">
   		<LoadingView v-if='footerShow'></LoadingView>
-  		<router-view></router-view>
+  		<keep-alive>
+				<router-view></router-view>
+			</keep-alive>
   		<FooterView></FooterView>
   </div>
 </template>

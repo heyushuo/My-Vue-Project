@@ -22,7 +22,7 @@
 		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
 		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
 		</mt-swipe>
-		<contentView :arrData='arrData' @getMore="fetchData"></contentView>
+		<contentView :arrData='arrData' @getMore="fetchData1"></contentView>
 	</div>
 	
 </div>
@@ -47,13 +47,11 @@
 			contentView
 		},
 		methods:{
-			 fetchData: async function(data){
-			 		this.pageNo=data;
-			 		console.log(this.pageNo)
+			 fetchData: async function(){
+			 	console.log(this.messType)
 			    	let params = {
 			    		"pageNo":this.pageNo,
 			    		"messType":this.messType,
-			    		"province":1
 			      }
 			      const res = await this.api.get('/api/contentpublish/ajaxPageList.do', params)
 			      if (res.status== 200) {
@@ -63,13 +61,30 @@
     				}
 			      	
 		   },
+		   fetchData1: async function(data){
+			 		this.pageNo=data;
+			 		var _this=this;
+			    	let params = {
+			    		"pageNo":this.pageNo,
+			    		"messType":this.messType,
+			      }
+			      const res = await this.api.get('/api/contentpublish/ajaxPageList.do', params)
+			      if (res.status== 200) {
+			      		if(res.data.list.length>=0){
+				      		res.data.list.forEach(function(value,index){
+				      			console.log(value)
+				      			console.log(index)
+				      			_this.arrData.push(value);
+				      		})
+				      	}
+    				}
+			      	
+		   },
 		   tabswitch(num){
-//		   	this.$toast({
-//				  message: '提示',
-//				  duration: 1000
-//				});
 		   	    this.nowIndex=num;
 		   		this.messType=num;
+		   		this.pageNo=1;
+		   		this.arrData=[];
 		   		this.fetchData();
 		   }
 		}
