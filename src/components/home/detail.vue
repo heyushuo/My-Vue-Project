@@ -6,7 +6,7 @@
 				<h1 class="header" id="header">{{detailData.messHeader}}</h1>
 				<div class="small-title clearfix">
 						<div class="pull-left left">
-							<span>来源于:</span><span class="a1">{{detailData.readNum}}</span>
+							<span>来源于:</span><span v-if="departmentName" class="a1">{{detailData.departmentName}}</span><span v-else class="a1">公安部</span>
 						</div>
 						<div class="main">
 							<span>发表于:</span><span class="a2">{{detailData.releaseDate|normalData}}</span>
@@ -17,7 +17,7 @@
 					<!--<span class="resourse">来源:<span id="resourse"></span></span>  <span class="publish"><span>发表于:</span><span id="time">2017-1-6</span></span> <span class="view">浏览量:<span></span></span>-->
 				</div>
 				<div class="contentM" id="contentM">
-					<p>{{detailData.content}}</p>
+					<p v-html="detailData.content"></p>
 				</div>
 			</div>
 		</div>
@@ -27,6 +27,20 @@
 <script>
 	export default{
 		mounted(){
+			
+		},
+		computed:{
+			departmentName(){
+				console.log(this.detailData.departmentName)
+				if(typeof(this.detailData.departmentName)=='undefined'){
+					return false;
+				}else{
+					return true;
+				}
+			}
+		},
+		activated(){
+			//vue.js 2.x 能否设置某个组件不被keep-alive 的解决方案
 			this.fetchData();
 		},
 		data(){

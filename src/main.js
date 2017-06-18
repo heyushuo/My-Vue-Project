@@ -21,6 +21,14 @@ Object.keys(filters).forEach((key)=>Vue.filter(key,filters[key]));
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
+
+window.alert=function(msg){
+	Vue.$toast({
+	  message: msg,
+//	  position: 'bottom',
+	  duration: 1000
+	})
+}
 ////关于axios的一些配置
 ////axios的一些配置，比如发送请求显示loading，请求回来loading消失之类的
 //axios.interceptors.request.use(function (config) {  //配置发送请求信息时
@@ -44,6 +52,24 @@ const router=new VueRouter({
 	mode: 'history', //切换路径模式，变成history模式
 	scrollBehavior: () => ({ y: 0 }), // 滚动条滚动的行为，不加这个默认就会记忆原来滚动条的位置
 	 routes//如果只写一个单词相当于routes:routes
+})
+//权限控制
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    var login=localStorage.getItem("user");
+    if (!login) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // 确保一定要调用 next()
+  }
 })
 
 

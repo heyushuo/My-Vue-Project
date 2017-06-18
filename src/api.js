@@ -12,9 +12,6 @@ axios.interceptors.request.use(function (config) {  //配置发送请求信息�
 });
 
 axios.interceptors.response.use(function (response) { //配置请求成功后
-	setTimeout(()=>{
-		store.dispatch('hideFooter');
-	},100)
   return response;
 }, function (error) {
 	
@@ -65,6 +62,9 @@ axios.interceptors.response.use(function (response) { //配置请求成功后
 
 
 function checkStatus (response) {
+	setTimeout(()=>{
+		store.dispatch('hideFooter');
+	},100)
   // loading
   // 如果http状态码正常，则直接返回数据
   if (response && (response.status === 200 || response.status === 304 || response.status === 400)) {

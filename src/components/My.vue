@@ -9,7 +9,7 @@
 					<div class="pull-left" onclick="clicked('barcode_scan.html',true,true);" id="scanCode">扫一扫</div>
 					<div class="pull-right" id="logout"><i class="iconfont icon-zhuxiao"></i><span>注销</span></div>
 				</div>
-				<div class="login"><div><a href="javascript:;"><p>登录</p><p>注销</p></a></div></div>
+				<div class="login" @click="loginOut" ><div><a href="javascript:;"><p>登录</p><p>注销</p></a></div></div>
 				<div class="randInfo"><span>积分值:<span id="userScore"></span>&nbsp;|&nbsp;</span><span id="geren" >个人排名:<span id="userRanking"></span>&nbsp;|&nbsp;</span><span id="danwei" >单位排名:<span id="userDeptRanking"></span></span></div>
 			</div>
 			<div class="my-content">
@@ -95,41 +95,23 @@
 						</a>
 					</li>
 				</ul>
-				<!-- <div class="tool">
-					<span class="iconfont icon-gongju"></span><span>工具</span>
-				</div> -->
-				<!-- <ul id="gongju" class="clearfix chuli gongju">
-					<li><a href="view/deal/xiezuoguangbo.html">
-						<div class="iconfont icon-guangbo"></div>
-						<p>广播list(去)</p>
-					</a></li>
-					<li><a href="view/deal/faqingbaoxiaojie.html">
-						<div class="iconfont icon-guangbo"></div>
-						<p>小节(去)</p>
-					</a></li>
-					<li><a href="view/deal/jiafenList.html">
-						<div class="iconfont icon-guangbo"></div>
-						<p>加分(去)</p>
-					</a></li>
-					<li><a href="view/deal/shensuContent.html">
-						<div class="iconfont icon-guangbo"></div>
-						<p>申诉(去)</p>
-					</a></li>
-					<li><a href="view/deal/daipingshen.html">
-						<div class="iconfont icon-guangbo"></div>
-						<p>待评审(去)</p>
-					</a></li>
-					<li><a href="./view/deal/jiafenContent.html">
-						<div class="iconfont icon-guangbo"></div>
-						<p>申请加分</p>
-					</a></li>
-				</ul> -->
 			</div>
 		</div>
 </div>
 </template>
 
 <script>
+	export default{
+		methods:{
+			loginOut(){
+				console.log(11)
+				if(localStorage.getItem("user")){
+					localStorage.removeItem("user");
+					this.$route.push({"path":"/home"});
+				}
+			}
+		}
+	}
 </script>
 
 <style scoped="scoped">
