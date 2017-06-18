@@ -89,10 +89,16 @@
 						</a>
 					</li>
 					<li class="daiqianshou">
-						<a href="view/deal/searchFace.html">
+						<a href="javascript:;">
 							<div class="iconfont icon-guangbo" style="color:#C40000;"></div>
 							<p id="searchFace" style="font-size:0.1rem;color:black;">公情搜脸</p>
 						</a>
+					</li>
+					<li class="daiqianshou">
+						<router-link :to="{path:'/upload'}">
+							<div class="iconfont icon-guangbo" style="color:#C40000;"></div>
+							<p id="searchFace" style="font-size:0.1rem;color:black;">文件上传</p>
+						</router-link>
 					</li>
 				</ul>
 			</div>

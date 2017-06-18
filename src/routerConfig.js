@@ -2,6 +2,7 @@ import MyView from './components/My.vue'
 import HomeView from './components/home/Home.vue'
 import DetailView from './components/home/detail.vue'
 import LoginView from './components/login/Login.vue'
+import UploadView from './components/upload/Upload.vue'
 
 export default[
 	{
@@ -25,5 +26,9 @@ export default[
 	{
 		path:"/login",
 		component:LoginView
+	},
+	{
+		path:"/upload",
+		component:UploadView
 	}
 ]
