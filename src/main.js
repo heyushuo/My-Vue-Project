@@ -59,6 +59,8 @@ router.beforeEach((to, from, next) => {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     var login=localStorage.getItem("user");
+    console.log(!login)
+    console.log(to.fullPath)
     if (!login) {
       next({
         path: '/login',

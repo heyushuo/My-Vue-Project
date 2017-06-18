@@ -1,9 +1,9 @@
 <template>
   <div id="app">
   		<LoadingView v-if='footerShow'></LoadingView>
-  		<keep-alive>
+  		<!--<keep-alive>-->
 				<router-view></router-view>
-			</keep-alive>
+			<!--</keep-alive>-->
   		<FooterView></FooterView>
   </div>
 </template>

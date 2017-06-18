@@ -44,14 +44,15 @@
 					   return false;
 				    }
 			        
-			        if (this.password.length<6){
-					   alert('密码长度不能小于6');
-					   return false;
-				    }
+//			        if (this.password.length<6){
+//					   alert('密码长度不能小于6');
+//					   return false;
+//				    }
 				  ev.target.setAttribute("disabled",true);
 			      const res = await this.api.post('/api/user/doLogin.do', this.userData);
 			      if (res.status== 200) {
-			      	var user=res.data.user;
+			      	console.log(res.data)
+			      	var user=res.data.resultMap.user;
 			      	var status=res.data.status;
 			      	console.log(status)
 			      		if (status==1) {

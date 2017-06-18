@@ -27,11 +27,10 @@
 <script>
 	export default{
 		mounted(){
-			
+			this.fetchData();
 		},
 		computed:{
 			departmentName(){
-				console.log(this.detailData.departmentName)
 				if(typeof(this.detailData.departmentName)=='undefined'){
 					return false;
 				}else{
@@ -39,10 +38,10 @@
 				}
 			}
 		},
-		activated(){
-			//vue.js 2.x 能否设置某个组件不被keep-alive 的解决方案
-			this.fetchData();
-		},
+//		activated(){
+//			//vue.js 2.x 能否设置某个组件不被keep-alive 的解决方案
+//			this.fetchData();
+//		},
 		data(){
 			return {
 				detailData:{}
@@ -51,6 +50,7 @@
 		methods:{
 			fetchData: async function(){
 					const id=this.$route.params.id;
+					console.log(id)
 			    	let params = {
 			    		"id":id,
 			      	}
