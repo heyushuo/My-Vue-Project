@@ -3,7 +3,7 @@
 	
 	<div class="box">
 		<div class="home-head clearfix">
-			<div class="logo pull-left">
+			<div @click="tabMenu" class="logo pull-left">
 				<img src="../../../static/img/logo.png"/>
 			</div>
 			<div class="search pull-left">
@@ -23,6 +23,67 @@
 		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
 		</mt-swipe>
 		<contentView :arrData='arrData' @getMore="fetchData1"></contentView>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		
+	</div>
+	<div id="show" style="display: none;">
+		<h1>何玉硕</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
 	</div>
 	
 </div>
@@ -86,6 +147,15 @@
 		   		this.pageNo=1;
 		   		this.arrData=[];
 		   		this.fetchData();
+		   },
+		   tabMenu(){
+		   	var html=document.getElementById("show").innerHTML;
+		   	layer.open({
+		   		type:1,
+		   		content:html,
+		   		style:'position:fixed;left:0;bottom:0;width:100%;height:500px;overflow-y:scroll;',
+		   		anim:'up'
+		   	})
 		   }
 		}
 	}
