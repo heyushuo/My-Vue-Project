@@ -110,6 +110,18 @@ export default {
                 'X-Requested-With': 'XMLHttpRequest'
             }
         }).then(checkStatus).then(checkCode)
+    },
+    postFile(url, data) {
+        return axios({
+            method: 'post',
+            url,
+            data:data,
+            timeout: 30000,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        }).then(checkStatus).then(checkCode)
     }
 }
 //这里的 data 为什么需要用qs.stringify(data)包一下, 

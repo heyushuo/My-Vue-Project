@@ -53,7 +53,7 @@
 			    		"pageNo":this.pageNo,
 			    		"messType":this.messType,
 			      }
-			      const res = await this.api.get('/api/contentpublish/ajaxPageList.do', params)
+			      const res = await this.api.get('/api/app/contentpublish/ajaxPageList.do', params)
 			      if (res.status== 200) {
 			      		if(res.data.list.length>=0){
 				      		this.arrData=res.data.list;
@@ -68,7 +68,7 @@
 			    		"pageNo":this.pageNo,
 			    		"messType":this.messType,
 			      }
-			      const res = await this.api.get('/api/contentpublish/ajaxPageList.do', params)
+			      const res = await this.api.get('/api/app/contentpublish/ajaxPageList.do', params)
 			      if (res.status== 200) {
 			      		if(res.data.list.length>=0){
 				      		res.data.list.forEach(function(value,index){

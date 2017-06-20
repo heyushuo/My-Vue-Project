@@ -19,12 +19,27 @@
 <script>
 	export default{
 		methods:{
-			upload(ev){
+			upload : async function (ev){
 				var file=ev.target.files[0];
 				document.getElementById("fileName1").innerHTML=file.name;
-				var formData = new FormData()
-                formData.append('fileName', file)
-				
+				var formData = new FormData();
+                formData.append('fileName', file);
+//              var config={
+//              	headers:{'Content-Type' : 'application/x-www-form-urlencoded'}
+//              }
+//             this.$http.post('/api/admin/upload/uploadFile.do', formData,config)
+//			  .then(function (response) {
+//			    console.log(response);
+//			  })
+//			  .catch(function (error) {
+//			    console.log(error);
+//			  });
+                
+                
+				const res = await this.api.postFile('/api/admin/upload/uploadFile.do',formData);
+				if (res.status== 200) {
+					console.log(res)
+				}				
 			}
 		}
 	}

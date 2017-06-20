@@ -54,7 +54,7 @@
 			    	let params = {
 			    		"id":id,
 			      	}
-			      const res = await this.api.get('/api/contentpublish/toView.do', params)
+			      const res = await this.api.get('/api/app/contentpublish/toView.do', params)
 			      console.log(res)
 			      if (res.status== 200) {
 			      		this.detailData=res.data.contentPublish;

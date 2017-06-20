@@ -132,7 +132,7 @@
 			 	var params={
 			 		"userId":this.userId
 			 	}
-				const res = await this.api.get('/api/user/doSelectUser.do',params);
+				const res = await this.api.get('/api/app/user/doSelectUser.do',params);
 				if (res.status== 200) {
 					this.infoData=res.data;		
 					console.log(this.infoData)
@@ -142,7 +142,7 @@
 				var data={
 					"userId":this.userId
 				}
-				const res = await this.api.get('/api/user/doSign.do',data);
+				const res = await this.api.get('/api/app/user/doSign.do',data);
 				if (res.status== 200) {
 					var status=res.data.status;
 					if(status==1){

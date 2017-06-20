@@ -49,7 +49,7 @@
 //					   return false;
 //				    }
 				  ev.target.setAttribute("disabled",true);
-			      const res = await this.api.post('/api/user/doLogin.do', this.userData);
+			      const res = await this.api.post('/api/app/user/doLogin.do', this.userData);
 			      if (res.status== 200) {
 			      	console.log(res.data)
 			      	var user=res.data.resultMap.user;

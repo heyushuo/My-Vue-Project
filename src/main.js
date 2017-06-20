@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import routes from './routerConfig.js'
 import api from './api.js'
 import filters from './filters/'
+//import axios from 'axios'
 //require('./api.js');
 Vue.prototype.api = api
 import store from './store/'
