@@ -30,27 +30,7 @@
 		<h1>sdkljads</h1>
 		<h1>sdkljads</h1>
 		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
+		<h1 @click="tabMenu">sdkljad3333333333333333333s</h1>
 		<h1>sdkljads</h1>
 		<h1>sdkljads</h1>
 		
@@ -60,6 +40,26 @@
 		<h1>sdkljads</h1>
 		<h1>sdkljads</h1>
 		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1 @click="tabMenu" >sdkljadsd123123123s</h1>
+		<h1 @click="tabMenu" >sdklj123123123123ads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1>sdkljads</h1>
+		<h1 @click="tabMenu" >sdkljads</h1>
 		
 	</div>
 	<div id="show" style="display: none;">
@@ -153,8 +153,14 @@
 		   	layer.open({
 		   		type:1,
 		   		content:html,
-		   		style:'position:fixed;left:0;bottom:0;width:100%;height:500px;overflow-y:scroll;',
-		   		anim:'up'
+		   		style:'position:fixed;left:0;bottom:0;width:100%;height:100px;overflow-y:scroll;',
+		   		anim:'up',
+		   		shade:0.2
+		   	})
+
+		   	document.getElementsByClassName("layui-m-layershade")[0].addEventListener("touchmove",function(e){
+		   		e.preventDefault();
+		   		e.stopPropagation();
 		   	})
 		   }
 		}
