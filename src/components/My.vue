@@ -30,10 +30,10 @@
 						</a>
 					</li>
 					<li>
-						<a href="view/deal/faxiezuo.html">
+						<router-link :to='{path:"/send"}'>
 							<div class="iconfont icon-renren"  style="color:#FB9F23;"></div>
 							<p style="font-size:0.1rem;color:black;">发协作</p>
-						</a>
+						</router-link>
 					</li>
 					<li>
 						<a href="view/deal/faguangbo.html">

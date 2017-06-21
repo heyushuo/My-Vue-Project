@@ -3,6 +3,7 @@ import HomeView from './components/home/Home.vue'
 import DetailView from './components/home/detail.vue'
 import LoginView from './components/login/Login.vue'
 import UploadView from './components/upload/Upload.vue'
+import SendView from './components/send/Send.vue'
 
 export default[
 	{
@@ -30,5 +31,9 @@ export default[
 	{
 		path:"/upload",
 		component:UploadView
+	},
+	{
+		path:"/send",
+		component:SendView
 	}
 ]

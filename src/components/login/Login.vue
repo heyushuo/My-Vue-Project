@@ -61,8 +61,10 @@
 			      			
 			      		}else if(status==0){
 			      			alert("服务端异常");
+			      			ev.target.setAttribute("disabled",true);
 			      		}else if(status==2){
 			      			alert("手机号或密码错误");
+			      			ev.target.setAttribute("disabled",true);
 			      		}
     				}else{
     					 ev.target.removeAttribute("disabled");

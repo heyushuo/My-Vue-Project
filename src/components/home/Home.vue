@@ -23,67 +23,26 @@
 		  <mt-swipe-item><img src="../../../static/img/lunbo.jpg"/></mt-swipe-item>
 		</mt-swipe>
 		<contentView :arrData='arrData' @getMore="fetchData1"></contentView>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1 @click="tabMenu">sdkljad3333333333333333333s</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1 @click="tabMenu" >sdkljadsd123123123s</h1>
-		<h1 @click="tabMenu" >sdklj123123123123ads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1 @click="tabMenu" >sdkljads</h1>
-		
 	</div>
 	<div id="show" style="display: none;">
 		<h1>何玉硕</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
+		<span>文件上传</span>
+		<input type="file" name="" id="" value="" />
+		<h1>何玉硕</h1>
 		
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
-		<h1>sdkljads</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1><h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		<h1>何玉硕</h1>
+		
 	</div>
 	
 </div>
@@ -157,10 +116,8 @@
 		   		anim:'up',
 		   		shade:0.2
 		   	})
-
-		   	document.getElementsByClassName("layui-m-layershade")[0].addEventListener("touchmove",function(e){
+		   	document.getElementsByClassName("layui-m-layer")[0].addEventListener("touchmove",function(e){
 		   		e.preventDefault();
-		   		e.stopPropagation();
 		   	})
 		   }
 		}
