@@ -26,11 +26,12 @@
 	    <div class="send-unit1" style="background: white;">
 			<div class="unit1">
 				<label class="text" for="cooperationType">协作类型</label>
-				<select id="cooperationType"  v-model="arrData.cooperationType">
+				<select id="cooperationType" v-model="arrData.cooperationType">
 					<option value="-1">请选择</option>
 					<option value="1">落地查证类</option>
 					<option value="2">信息查询类</option>
 				</select>
+				<!--<SelectView :arrData="selectData" @selectChange="change1"></SelectView>-->
 			</div>
 			<div class="unit1">
 				<label class="text" for="timeLimit">反馈时限(小时)</label>
@@ -41,18 +42,16 @@
 		<div class="send-unit1" style="background: white;">
 			<div class="unit1">
 				<label class="text" for="requestCauseId">请求事由</label>
-				<select id="requestCause" name="requestCauseId"> <!--shuo-->
+				<select id="requestCause" v-model="arrData.requestCauseId" @change="requestCause"> <!--shuo-->
 					<option value="-1">请选择</option>
-					<!--<option value="2">侦查破案</option>
-					<option value="3">其他</option>-->
-				<option value="1">事件预防</option><option value="2">侦查破案</option><option value="3">其他</option></select>
+					<option v-for="item in requestData" :value="item.id">{{item.content}}</option>
+				</select>
 			</div>
 			<div class="unit1">
 				<label class="text" for="twoRequestCauseId">二级请求事件</label>
-				<select id="twoRequestCause" name="twoRequestCauseId">
+				<select id="twoRequestCause" v-model="arrData.twoRequestCauseId">
 					<option value="-1">请选择</option>
-					<!--<option value="2">2</option>
-					<option value="3">3</option>-->
+					<option v-for="item in tworesData" :value="item.id">{{item.content}}</option>
 				</select>
 			</div>
 		</div>
@@ -61,11 +60,18 @@
 			<mt-button type="danger" size="normal">保存</mt-button>
 		</div>
 	</div>
+	<!--增加查询对象-->
+	
 </template>
 
 <script>
+	import SelectView from '../../base/Select.vue'
 	export default{
+		components:{
+			SelectView
+		},
 		mounted(){
+			this.getSelect();
 			//回填数据
 			if(window.localStorage){
 			 	var userInfo=JSON.parse(localStorage.getItem("user"));
@@ -80,23 +86,12 @@
 			 	this.arrData.connectPhone=phone;
 			 	this.arrData.promoterUserId=userId;
 			 	this.arrData.departmentId=userInfo.departmentId;
-//			 	//回显编号和协作状态信息
-//			 	if(sessionStorage.getItem("number1")){
-//			 		$("#number").val(sessionStorage.getItem("number1"));
-//			 	}else{
-//			 		$.ajax({
-//						type:"get",
-//						url:ctx+"/gongan/app/cooperation/toCooperation.do?userId="+userId,
-//						dataType:"json",
-//						success:function(data){
-//							$("#number").val(data.coopNumbers);
-//							sessionStorage.setItem("number1",data.coopNumbers);
-//						},
-//						error:function(){
-//							diaLog("error")
-//						}
-//					});
-//			 	}
+			 	//回显编号和协作状态信息
+				if(sessionStorage.getItem("number1")){
+					this.arrData.number=sessionStorage.getItem("number1");
+				}else{
+					this.getNumber();
+				}
 					//悬赏积分超过50会弹框
 //				$("#rewIntegral").blur(function(){
 //					//12、判断是否是协作员，如果是，看积分是否大于100
@@ -110,7 +105,10 @@
 //						alert("悬赏积分不能超过50分");
 //					}
 //				})
+
 			}
+			//一级请求事由
+			
 		},
 		data(){
 			return{
@@ -128,17 +126,56 @@
 					connectName:"",
 					cooperationDeptName:"",
 					cooperationDeptId:"",
-					title:"",
+					title:"关于***的协作",
 					cooperationType:-1,
 					timeLimit:48,
-					cooperationContent:''
+					cooperationContent:'',
+					requestCauseId:-1,
+					twoRequestCauseId:-1
 					
-				}
+				},
+				selectData:[
+					{"text":"落地查证类",value:1},
+					{"text":"信息查询类",value:2}
+				],
+				requestData:[],
+				tworesData:[]
 			}
 		},
 		methods:{
-			change(){
-				console.log(this.arrData.cooperationType)
+			getNumber: async function(){
+				var param={
+					"userId":this.arrData.promoterUserId
+				}
+				const res=await this.api.get("/api/app/cooperation/toCooperation.do",param);
+				if(res.status==200){
+					this.arrData.nunber=res.data.coopNumbers;
+					sessionStorage.setItem("number1",this.arrData.nunber);
+				}
+			},
+			getSelect:async function(){
+				var param={
+					"parentId":-1
+				}
+				const res= await this.api.get("/api/app/dictionaries/getDictionaries.do",param);
+				if(res.status==200){
+					this.requestData=res.data.list;
+					console.log(this.requestData)
+				}
+			},
+			requestCause : async function(){
+				this.arrData.twoRequestCauseId=-1;
+				if (this.arrData.requestCauseId!=-1) {
+					var param={
+							"parentId":this.arrData.requestCauseId
+						}
+						console.log(this.requestCauseId)
+						const res= await this.api.get("/api/app/dictionaries/getDictionaries.do",param);
+						if(res.status==200){
+							console.log(res.data)
+							this.tworesData=res.data.list;
+						}
+				}
 			}
 		}
 	}
