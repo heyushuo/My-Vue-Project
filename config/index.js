@@ -32,7 +32,7 @@ module.exports = {
     		//172.20.10.3
     		//192.168.1.110
     		//192.168.8.103
-        target: 'http://192.168.8.103:9090/gongan',
+        target: 'http://192.168.1.110:9090/gongan',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

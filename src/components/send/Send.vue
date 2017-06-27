@@ -80,7 +80,7 @@
 			//标签框数据加载
 			this.getLabel();
 			//回填数据
-			if(window.localStorage){
+			if(window.localStorage.getItem("user")){
 			 	var userInfo=JSON.parse(localStorage.getItem("user"));
 			 	var userId=userInfo.id;//发起人id
 			 	var phone=userInfo.phone;//发起人手号
@@ -124,7 +124,7 @@
 					departmentId:'',
 					status:"待申请",
 					number:"",
-					rewIntegral:0,
+					rewIntegral:10,
 					money:0,
 					labelText:"",
 					labelName:"",
