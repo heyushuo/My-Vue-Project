@@ -1,5 +1,8 @@
 <template>
 	<div id="send" class="box">
+		<div style="position:fixed;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index: 999;display: none;" @click="labelHide" id="label">
+			<labelView :labelData="labelData" @labelHide="labelHide"></labelView>
+		</div>
 		<div class="head"><a id="head" href="javascript:;" @click="$router.go(-1)" class="back pull-left iconfont icon-zuojiantou"></a><span class="pull-left">发协作</span></div>
 		<input type="hidden"  v-model="arrData.promoterUserId" id="promoterUserId"/>
 		<input type="hidden"  v-model="arrData.departmentId" id="departmentId"  /><!--协作发起人所属部门  -->
@@ -8,7 +11,7 @@
 		<mt-field label="悬赏积分 :" v-model.trim="arrData.rewIntegral"></mt-field>
 		<mt-field label="现金(元) :" v-model.trim="arrData.money"></mt-field>
 		<mt-field label="标签 :" style="display: none;" v-model.trim="arrData.labelText"></mt-field>
-		<mt-field label="标签 :" v-model.trim="arrData.labelName"></mt-field>
+		<mt-field label="标签 :" @click.native="labelShow1" v-model.trim="arrData.labelName"></mt-field>
 		<mt-field label="发起人姓名" v-model.trim="arrData.userName"></mt-field>
 		<mt-field label="协作状态" v-model.trim="arrData.userPhone"></mt-field>
 		<mt-field label="协作状态" v-model.trim="arrData.connectName"></mt-field>
@@ -61,17 +64,21 @@
 		</div>
 	</div>
 	<!--增加查询对象-->
-	
 </template>
 
 <script>
 	import SelectView from '../../base/Select.vue'
+	import labelView from './label.vue'
 	export default{
 		components:{
-			SelectView
+			SelectView,
+			labelView
 		},
 		mounted(){
+			//选择框数据加载
 			this.getSelect();
+			//标签框数据加载
+			this.getLabel();
 			//回填数据
 			if(window.localStorage){
 			 	var userInfo=JSON.parse(localStorage.getItem("user"));
@@ -139,7 +146,8 @@
 					{"text":"信息查询类",value:2}
 				],
 				requestData:[],
-				tworesData:[]
+				tworesData:[],
+				labelData:[]
 			}
 		},
 		methods:{
@@ -160,7 +168,6 @@
 				const res= await this.api.get("/api/app/dictionaries/getDictionaries.do",param);
 				if(res.status==200){
 					this.requestData=res.data.list;
-					console.log(this.requestData)
 				}
 			},
 			requestCause : async function(){
@@ -172,10 +179,39 @@
 						console.log(this.requestCauseId)
 						const res= await this.api.get("/api/app/dictionaries/getDictionaries.do",param);
 						if(res.status==200){
-							console.log(res.data)
 							this.tworesData=res.data.list;
 						}
 				}
+			},
+			getLabel : async function(){
+						const res= await this.api.get("/api/admin/cooperation/toGetAllLable.do");
+						if(res.status==200){
+							var status=res.data.status;
+							if (status==1) {
+								this.labelData=res.data.lableMap;
+							}
+						}
+			},
+			labelShow1(){
+				document.getElementById("label").style.display="block";
+			},
+			labelHide(data){
+				if(typeof(data)!="undefined"){
+					console.log(data)
+					var id=[];
+					var name=[];
+					data.forEach((el,index)=>{
+						id.push(el.id);
+						name.push(el.name);
+					})
+					document.getElementById("label").style.display="none";
+					this.arrData.labelText=id.join(",");
+					this.arrData.labelName=name.join(",");
+//					console.log(data.join(","))
+				}else{
+					document.getElementById("label").style.display="none";
+				}
+			
 			}
 		}
 	}
